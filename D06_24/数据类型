@@ -1,0 +1,14 @@
+1、什么情况下回出现undefined
+2、数据类型
+    数字 int
+    字符串 string
+    布尔 boolean
+    数组
+    对象
+    undefined
+    null
+    symbol
+3、性能优化
+    css  html  js  工具
+4、contains
+5、js掌握三种继承方法:bind、apply、call

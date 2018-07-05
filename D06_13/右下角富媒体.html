@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>右下角富媒体</title>
+    <style>
+        body{
+            height: 3000px;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            right: 0px;
+            bottom: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+<script>
+    window.onload=window.onscroll=window.onresize=function () {
+        var odiv = document.body.children[0];
+        var ost = document.documentElement.scrollTop || document.body.scrollTop;//获取当前页面滚动条纵坐标的位置
+        var clientH = document.documentElement.clientHeight;//可见区域高度
+        var scrollT = ost+clientH;
+        odiv.style.top=scrollT-odiv.offsetHeight+"px";
+    }
+</script>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery0.0.js"></script>
+    <style>
+        li{
+            width: 100px;
+            height: 100px;
+            background: red;
+            float: left;
+            margin-left: 20px;
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+<script>
+    $(function (fn) {
+        let oul = document.body.children[0];
+        let ali = oul.getElementsByTagName("li");
+        oul.onclick=function (ev) {
+            oEvent = ev || event;
+            //兼容两者
+            //let target = oEvent.target || oEvent.srcElement;
+            let target = oEvent.srcElement ? oEvent.srcElement : oEvent.target;
+            if(target.tagName !== "LI") return
+            target.style.background = "blue";
+        }
+    });
+</script>
+</html>

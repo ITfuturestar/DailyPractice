@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body onload="checkCookie()">
+    http协议 挥手和捂手策略
+    前台页面请求后台数据渲染页面，都发生了什么
+</body>
+<script>
+    //设置cookie值的函数
+    function setCookie(cname,cvalue,exdays) {
+        let d = new Date();
+        d.setTime(d.getTime()+(exdays*24*60*60*1000));
+        let expires = "expires="+d.toGMTString();
+        document.cookie = cname + "=" + cvalue + ";" + expires;
+    }
+    //获取cookie值的函数
+    function getCookie(cname) {  //cookie的参数名为cname
+        let name = cname + "=";
+        let ca = document.cookie.split(";");
+        for (let i = 0;i < ca.length;i++) {
+            let c = ca[i].trim();
+            if (c.indexOf(name) == 0){
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+    //检测cookie值的函数
+    function checkCookie() {
+        let username = getCookie("username");
+        if (username != "") {
+            alert("Welcome again" + username);
+        }else {
+            username = prompt("Please enter your name:","");
+            if (username != "" && username != null) {
+                setCookie("username",username,30);
+            }
+        }
+    }
+    //删除cookie
+    //document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    //修改cookie
+    //document.cookie="username=John Smith; expires=Thu, 18 Dec 2013 12:00:00 GMT; path=/";
+</script>
+</html>

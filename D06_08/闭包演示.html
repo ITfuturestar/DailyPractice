@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包演示</title>
+    <style>
+        p{
+            background: gold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body onload="init()">
+    <p>产品 0</p>
+    <p>产品 1</p>
+    <p>产品 2</p>
+    <p>产品 3</p>
+    <p>产品 4</p>
+</body>
+<script>
+    function init(){
+        var arr = document.getElementsByTagName("p");
+        for (var i = 0;i<arr.length;i++){
+            (function(i){
+                arr[i].onclick=function () {
+                    alert(i);
+                }
+            })(i);
+        }
+    }
+</script>
+</html>

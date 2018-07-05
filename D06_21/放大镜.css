@@ -1,0 +1,39 @@
+练习.css
+body{
+    position: relative;
+}
+*{
+    margin: 0;
+    padding:0;
+}
+#Box{
+    height:300px;
+    width:300px;
+    position: relative;
+    border:1px solid gray;
+    margin-left: 20px;
+}
+#bigBox{
+    height:300px;
+    width:300px;
+    position: absolute;
+    top:0;
+    left:310px;
+    overflow: hidden;
+    display:none;
+    border: 1px solid gray;
+}
+#Box img{
+    height:300px;
+    width:300px;
+}
+#lay{
+    background:#fff;
+    border:1px solid gray;
+    position: absolute;
+    top:0;
+    left: 0;
+    opacity:0.5;
+    display:none;
+    filter:alpha(opacity=50);
+}

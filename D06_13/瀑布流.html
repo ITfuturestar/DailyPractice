@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>瀑布流</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        #box{
+            width: 690px;
+            margin: 0 auto;
+        }
+        ul{
+            width: 200px;
+            float: left;
+            border: 1px solid red;
+            margin: 0 10px;
+        }
+        ul li{
+            width: 100%;
+            height: 400px;
+            background: black;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul> </ul>
+        <ul> </ul>
+        <ul> </ul>
+    </div>
+</body>
+<script>
+    function index(n,m) {
+        return parseInt(n+Math.random()*(m-n));
+    }
+    function createLi() {
+        var oli = document.createElement("li");
+        oli.style.background = `rgb(${index(0, 256)},${index(0, 256)},${index(0, 256)})`;
+        oli.style.height = index(100, 400) + "px";
+        return oli;
+    }
+    window.onload=function () {
+        var obox = document.body.children[0];
+        var aul = obox.children;
+        function  create20() {
+            for (var i = 0;i < 20;i++) {
+                var oli = createLi();
+                var arr = [];
+                for (var j = 0;j < aul.length;j++) {
+                    arr.push(aul[j]);
+                }
+                arr.sort(function (u1,u2) {
+                    return u1.scrollHeight - u2.scrollHeight;//根据ul的高度进行升序排序
+                });
+                arr[0].appendChild(oli);//每次给高度最小的ul赋值
+            }
+        }
+        create20();
+        window.onscroll=window.onresize=function () {
+            var ost = document.documentElement.scrollTop || document.body.scrollTop;
+            var clientH = document.documentElement.clientHeight;
+            if(ost+clientH >= document.body.scrollHeight-500){
+                create20();
+            }
+        }
+    }
+</script>
+</html>

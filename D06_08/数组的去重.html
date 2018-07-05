@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //json的特性，key是唯一的
+    var arr = [1,3,8,65,22,6,2,5,3,7,9,5,6];
+    var json = {};
+    for (var i = 0;i < arr.length;i++){
+        json[arr[i]]=1;
+    }
+    var str = [];
+    for (var i in json){
+        str.push(i);
+    }
+    document.write(str);
+</script>
+</html>

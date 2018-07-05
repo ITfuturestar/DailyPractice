@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    function myAlert(ev,obj,fn) { //事件对象，事件名称，函数
+        // if(obj.addEventListener){ //非IE浏览器
+        //     obj.addEventListener(ev,fn,flase);//"事件名称", 函数, false
+        // }else{
+        //     obj.attachEvent(ev,fn);//IE浏览器
+        // }
+        obj.addEventListener ? obj.addEventListener(ev,fn,false) : obj.attachEvent(ev,fn);
+    }
+    function show(){
+        alert(111)
+    }
+    function show1(){
+        alert(222)
+    }
+    myAlert("click",document,show);
+    myAlert("click",document,show1);
+</script>
+</html>

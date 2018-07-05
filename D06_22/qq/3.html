@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery.js"></script>
+</head>
+<body>
+
+</body>
+<script>
+    $.ajax({
+        url:"secret",
+        dataType:"text",
+        cache:true,
+        success:function (result) {
+            $(`<div>${result}</div>`).appendTo(document.body);
+        }
+    });
+</script>
+</html>

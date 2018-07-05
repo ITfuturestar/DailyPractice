@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>倒计时</title>
+</head>
+<body>
+    <span></span>
+</body>
+<script>
+    window.onload=function () {
+        var oSpan = document.getElementsByTagName("span")[0];
+        var date = new Date();//创建一个日期
+        date.setFullYear(2018,7,31);//设置日期
+        date.setHours(0,0,0,0);//设置时分秒毫秒
+        var date1 = date.getTime();//得到时间戳
+        function trime(){
+            var date2 = new Date();
+            var v = date2.getTime();
+            var s = parseInt((date1-date2)/1000);
+            var d = parseInt(s/86400);
+                s%=86400;
+            var h = parseInt(s/3600);
+                s%=3600;
+            var m = parseInt(s/60);
+                s%=60;
+            oSpan.innerHTML=`${d}天${h}小时${m}分${s}秒`;
+        }
+        //trime();
+        setInterval(trime,1000);
+    }
+</script>
+</html>

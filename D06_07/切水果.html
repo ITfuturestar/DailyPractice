@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>切水果</title>
+    <style>
+        #obox{
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -50px;
+            margin-left: -50px;
+            text-align: center;
+        }
+        img{
+            padding-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div id="obox">
+        <img src="img/01.png"/>
+    </div>
+</body>
+<script>
+    window.onload=function(){
+        var obox = document.getElementById("obox");
+        var oImg = document.getElementsByTagName("img")[0];
+        var count = 0;
+        var time = null;
+        var time2 = null;
+        function toGo(){
+            time = setInterval(function () {
+                count++;
+                oImg.src=`img/0${count % 3 + 1}.png`;
+            },150);
+        }
+        toGo();
+        oImg.onclick=function(){
+            var count2 = 0;
+            //定时器，一点要先关后开
+            clearInterval(time);
+            clearInterval(time2);
+            time2 = setInterval(function(){
+                oImg.src=`img/fight0${count2 % 4 + 1}.png`;
+                count2++;
+                if(count2 == 8){//每次图片运行两遍
+                    clearInterval(time2);
+                    toGo();
+                }
+            },150);
+        }
+    }
+</script>
+</html>

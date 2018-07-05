@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包演示</title>
+    <style>
+        p{
+            background: gold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body onload="init()">
+    <p>产品 0</p>
+    <p>产品 1</p>
+    <p>产品 2</p>
+    <p>产品 3</p>
+    <p>产品 4</p>
+</body>
+<script>
+    /*
+    * 用let来声明的变量将具有块级作用域，
+    * "use strict" 的目的是指定代码在严格条件下执行。
+    *  严格模式下你不能使用未声明的变量。
+    * */
+    var arr = document.getElementsByTagName("p");
+    for (let i = 0;i < arr.length;i++) {'use strict'
+        arr[i].onclick=function(){
+            alert(i);
+        }
+    }
+</script>
+</html>

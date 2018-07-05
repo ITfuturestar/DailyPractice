@@ -1,0 +1,12 @@
+1、数组方法
+    join()
+    slice()
+    splice()
+    push()
+    pop()
+    sort()
+    reverse()
+    indexOf
+    lastIndexOf
+    shift()
+    unshift()

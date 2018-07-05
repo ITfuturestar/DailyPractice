@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery_class.js"></script>
+    <style>
+        .red{
+            background: #000000;
+        }
+    </style>
+</head>
+<body>
+    <ul id="oul">
+        <li class="red hehe">111</li>
+        <li class="haha gagake">222</li>
+        <li class="red">333</li>
+        <li class="red">444</li>
+        <li class="red">555</li>
+        <li class="red2"></li>
+    </ul>
+</body>
+<script>
+    window.onload=function(){
+        var oul = document.getElementById("oul");
+        var ali = $_(oul,'red');
+        for (var i = 0;i < ali.length;i++){
+            ali[i].style.background='red';
+        }
+    }
+</script>
+</html>

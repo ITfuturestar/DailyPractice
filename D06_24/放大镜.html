@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            float: left;
+            width: 300px;
+            height: 300px;
+            border: 1px solid #ccc;
+            position: relative;
+            left: 0;
+            top: 0;
+        }
+        #mask{
+            width: 100px;
+            height: 100px;
+            background: black;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0.5;
+            filter: alpha(opacity=50);
+            display: none;
+        }
+        #boxImg{
+            display: none;
+            overflow: hidden;
+        }
+        #boxImg img{
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <img src="images/dog1.jpg">
+        <span id="mask"></span>
+    </div>
+    <div id="boxImg">
+        <img src="images/dog.jpg">
+    </div>
+</body>
+<script>
+    window.onload=function () {
+        let box = document.getElementById("box");
+        let mask = document.getElementById("mask");
+        let boxImg = document.getElementById("boxImg");
+        let img = boxImg.children[0];
+        box.onmouseover=function () {
+            mask.style.display = "block";
+            boxImg.style.display = "block";
+        }
+        box.onmouseout=function () {
+            mask.style.display = "none";
+            boxImg.style.display = "none";
+        }
+        mask.onmousemove=function (ev) {
+            oEvent = ev || event;
+            let middleX = oEvent.clientX - mask.offsetWidth/2;
+            let middleY = oEvent.clientY - mask.offsetHeight/2;
+            if(middleX < 0)
+                middleX = 0;
+            else if (middleX > box.offsetWidth - mask.offsetWidth)
+                middleX = box.offsetWidth - mask.offsetWidth;
+            if (middleY < 0)
+                middleY = 0;
+            else if (middleY > box.offsetHeight - mask.offsetHeight)
+                middleY = box.offsetHeight - mask.offsetHeight;
+            mask.style.left = middleX + "px";
+            mask.style.top = middleY + "px";
+            img.style.left = -middleX/(box.offsetWidth - mask.offsetWidth)*(img.offsetWidth - boxImg.offsetWidth) + "px";
+            img.style.top = -middleY/(box.offsetWidth - mask.offsetHeight)*(img.offsetHeight - boxImg.offsetHeight) + "px";
+        }
+    }
+</script>
+</html>

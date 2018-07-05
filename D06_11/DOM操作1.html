@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p>hello world</p>
+    <button type="button" onclick="add()">点击添加</button>
+    <button type="button" onclick="remove()">删除节点</button>
+    <button type="button" onclick="replace()">替换节点</button>
+    <button type="button" onclick="clone()">复制节点</button>
+</body>
+<script>
+    //在body后面增加一个文本内容为"HELLO"的<p>节点，字体颜色为红色
+    function add() {
+        //var node = document.documentElement;//获取根节点
+        //var obody = document.documentElement.firstChild.nextSibling;//获取body元素
+        //var obody = node.lastChild;//另一种方法获取body元素
+        var oPnode = document.createElement("p");
+        oPnode.style.color = "red";
+        var oPtext = document.createTextNode("hello!!!");
+        var oPNode = document.body.childNodes[0];
+        oPnode.appendChild(oPtext);
+        document.body.insertBefore(oPnode, oPNode);
+    }
+    //删除第一个<p>节点
+    function  remove() {
+        var op = document.getElementsByTagName("p")[0];
+        if(op){
+            op.parentNode.removeChild(op);
+        }else{
+            alert("删除的节点不存在")
+        }
+    }
+    //创建一个文本内容为“hello”的<p>节点替换最后一个<p>节点
+    function replace(){
+        var op = document.createElement("p");
+        var oPtext = document.createTextNode("hello");
+        op.appendChild(oPtext);
+        var  oPNodes = document.getElementsByTagName("p");
+        oPNode = oPNodes[oPNodes.length-1];
+        document.body.replaceChild(op,oPNode);
+    }
+    //复制内容为“hello!!!”的<p>节点，移除该复制节点的字体颜色，并放在body后
+    function clone(){
+        var nodes = document.body.childNodes;
+        for (var i = 0;i < nodes.length;i++) {
+            if(nodes[i].innerHTML == "hello!!!"){
+                var cNode = nodes[i];
+            }
+        }
+        var cpnode = cNode.cloneNode(true);
+        cpnode.style.color = "";
+        var oPNode = nodes[0];
+        document.body.insertBefore(cpnode,oPNode);
+    }
+</script>
+</html>

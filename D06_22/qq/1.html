@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery.js"></script>
+</head>
+<body>
+
+</body>
+<script>
+    $.ajax({
+        url:"add",
+        dataType:"json",
+        cache:true,
+        success:function(result){
+            $.each(result.data,function (i,v) {
+                $(`<div>${i}</div>
+                 <div>${v.name}</div>
+                 <div>${v.age}</div>
+                `).appendTo(document.body);
+            })
+        }
+    });
+</script>
+</html>

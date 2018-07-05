@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //转换成[a=1&b=2&c=3]
+    var json = {'a':1,'b':2,'c':3};
+    var v = json.a;//根据key获取value
+    var v1 = Object.keys(json);//获取所有的key
+    console.log(v1);
+    console.log(v);
+    function jsonUrl(json) {
+        var arr = [];
+        for (var i in json) {
+            arr.push(i+'='+json[i]);
+        }
+        return arr.join('&');
+    }
+    document.write(jsonUrl(json));
+</script>
+</html>

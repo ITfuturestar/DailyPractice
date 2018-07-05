@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>剪切功能</title>
+    <style>
+        #obox{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>111</li>
+        <li>222</li>
+        <li>333</li>
+        <li>444</li>
+        <li>555</li>
+    </ul>
+    <input type="button" value="剪切">
+    <ul id="obox"></ul>
+</body>
+<script>
+    window.onload=function () {
+        var oul = document.body.children[0];
+        var obtn = document.body.children[1];
+        var oul2 = document.body.children[2];
+        var ali = oul.children;
+        var arr = null;
+        for (var i = 0;i < ali.length;i++) {
+            ali[i].onclick=function () {
+                arr=this;
+            }
+        }
+        obtn.onclick=function () {
+            oul2.appendChild(arr);
+        }
+    }
+</script>
+</html>

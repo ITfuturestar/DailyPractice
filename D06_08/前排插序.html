@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    window.onload=function(){
+        function getFindMin(arr,iMin){
+            let min=arr[iMin];
+            var theIndex=iMin;
+            for (var j= theIndex;j < arr.length;j++){
+                if(min>arr[j]){
+                    min=arr[j];
+                    theIndex=j;
+                }
+            }
+            return theIndex;
+        }
+        var arr = [12,12,4,6,3,100,-10,0];
+        for (var i = 0;i < arr.length;i++){
+            var min = getFindMin(arr,i);
+            var tmp;
+            tmp=arr[min];
+            arr[min] = arr[i];
+            arr[i] = tmp;
+        }
+        document.write(arr);
+    }
+</script>
+</html>

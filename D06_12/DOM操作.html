@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul></ul>
+</body>
+<script>
+    window.onload=function () {
+        var json = [
+            {"title":"高三班主任被学生暴打","href":"http://slide.news.sina.com.cn/s/slide_1_86523_283831.html"},
+            {"title":"为救同学高一学生溺亡","href":"http://slide.news.sina.com.cn/slide_1_2841_283893.html"},
+            {"title":"Angelababy靓丽登场","href":"http://slide.fashion.sina.com.cn/s/slide_24_84625_117314.html"}
+        ];
+        var oul = document.body.children[0];
+        for (var i = 0; i < json.length;i++) {
+            var oa = document.createElement("a");
+            oa.innerHTML=json[i].title;
+            oa.href=json[i].href;
+            oa.target = "_blak"
+            var oli = document.createElement("li");
+            oli.appendChild(oa);
+            oul.appendChild(oli);
+        }
+    }
+</script>
+</html>

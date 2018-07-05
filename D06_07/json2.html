@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    var json = {'a':[1,2,3],show:function(a){
+        //arguments是伪数组，不能用于数组的方法
+        alert(arguments[0].age);//arguments[0]里面只放了一个数组，就是person;arguments[0].age相当于person.age
+        arguments[0].show2();
+        return arguments[0].age;
+        }}
+    var person = {'name':'张飒',age:13,show2:function(){
+        alert(12);
+        }}
+    alert(json.show(person)+person.age);
+</script>
+</html>

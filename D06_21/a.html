@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // /\u{61}/.test('a') // false
+    // /\u{61}/u.test('a') // true
+    // /\u{20BB7}/u.test('𠮷') // true
+    console.log(/\u{20BB7}/u.test('𠮷'))
+
+    // /a{2}/.test('aa') // true
+    // /a{2}/u.test('aa') // true
+    // /𠮷{2}/.test('𠮷𠮷') // false
+    // /𠮷{2}/u.test('𠮷𠮷') // true
+    console.log(/𠮷{1}/u.test('𠮷𠮷𠮷'));
+    console.log(/a{2}/.test('aa'))
+    console.log(/1{2}/.test('11'))
+
+
+    function codePointLength(text) {
+        var result = text.match(/[\s\S]/gu);
+        return result ? result.length : 0;
+    }
+
+    var s = '饕餮';
+
+    s.length // 4
+    codePointLength(s) // 2
+    console.log(s.length);
+    console.log(codePointLength(s))
+
+    /*g修饰符*/
+    /*const REGEX = /a/g;
+    // 指定从2号位置（y）开始匹配
+    REGEX.lastIndex = 2;
+    // 匹配成功
+    const match = REGEX.exec('xaya');
+    // 在3号位置匹配成功
+    match.index // 3
+    console.log(match.index+"----");
+    // 下一次匹配从4号位开始
+    REGEX.lastIndex // 4
+    console.log(REGEX.lastIndex+"----")
+    // 4号位开始匹配失败
+    REGEX.exec('xaya') // null
+    console.log(REGEX.exec('xaya'))*/
+
+
+    /*y修饰符*/
+    const REGEX = /a/y;
+    // 指定从2号位置开始匹配
+    REGEX.lastIndex = 2;
+    // 不是粘连，匹配失败
+    REGEX.exec('xaxa') // null
+    console.log(REGEX.exec('xaya')+"++++")
+    // 指定从3号位置开始匹配
+    REGEX.lastIndex = 3;
+    // 3号位置是粘连，匹配成功
+    const match = REGEX.exec('xaya');
+    match.index // 3
+    REGEX.lastIndex=3; // 4
+    console.log(REGEX.exec('xaya')+"++++")
+    /*-------------------------------*/
+    // /b/y.exec('aba');
+    console.log(/b/y.exec('aba'));
+
+    console.log(/abc/yg.flags+".....");
+    // const re = /foo.bar/s;
+    // console.log(re.test('foo\nbar'))
+
+    const RE_DATE = /(\d{4})-(\d{2})-(\d{2})/;
+    const matchobj = RE_DATE.exec('2018-06-23');
+    console.log(matchobj[1]);
+    console.log(matchobj[2]);
+    console.log(matchobj[3]);
+</script>
+</html>

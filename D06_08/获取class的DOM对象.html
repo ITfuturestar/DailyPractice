@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .red{
+            width: 100%;
+            background: #000000;
+        }
+    </style>
+</head>
+<body>
+    <ul id="oUl">
+        <li class="red">111</li>
+        <li>222</li>
+        <li class="red">333</li>
+        <li class="red">444</li>
+        <li>555</li>
+    </ul>
+</body>
+<script>
+    function getByClass(oUl,sClass){
+        var aResult = [];
+        var sEle = oUl.getElementsByTagName("*");
+        for (var i=0;i<sEle.length;i++){
+            if(sEle[i].className==sClass){
+                aResult.push(sEle[i]);
+            }
+        }
+        return aResult;
+    }
+    window.onload=function () {
+        var oUl = document.getElementById("oUl");
+        var aClass = getByClass(oUl,"red");
+        for (var i=0;i<aClass.length;i++) {
+            aClass[i].style.background="red";
+        }
+    }
+</script>
+</html>
